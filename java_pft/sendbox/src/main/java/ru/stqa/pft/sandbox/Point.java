@@ -29,8 +29,8 @@ class Point {
 class Run {
     public static void main(String[] args) {
 
-        Point point1 = new Point(2, 6);
-        Point point2 = new Point(1, 7);
+        Point point1 = new Point(2, 2);
+        Point point2 = new Point(2, 2);
 
         double d1 = distance(point1, point2);
         System.out.println("Расстояние между точками в методе = " + d1);
