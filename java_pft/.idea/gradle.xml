@@ -4,10 +4,11 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/../sendbox" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/sendbox" />
+        <option name="gradleJvm" value="17" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/../sendbox" />
+            <option value="$PROJECT_DIR$/sendbox" />
           </set>
         </option>
       </GradleProjectSettings>
