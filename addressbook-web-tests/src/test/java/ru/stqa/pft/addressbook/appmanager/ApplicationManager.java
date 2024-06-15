@@ -13,8 +13,9 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
 
     public void init() {
-        System.setProperty("webdriver.edge.driver", "E:\\Download\\edgedriver_win64\\msedgedriver.exe");
+        System.setProperty("webdriver.edge.driver", "C:\\Users\\user\\IdeaProjects\\edgedriver_win64\\msedgedriver.exe");
         wd = new EdgeDriver();
+        wd.get("http://localhost/addressbook/");
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         groupHelper = new GroupHelper(wd);

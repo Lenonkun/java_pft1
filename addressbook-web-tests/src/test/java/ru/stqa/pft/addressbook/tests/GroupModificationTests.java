@@ -1,20 +1,16 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
-//import org.apache.commons.io.FileUtils;
 
-public class GroupCreationTests extends TestBase {
-
+public class GroupModificationTests extends TestBase{
     @Test
-    public void testGroupCreation() throws Exception {
+    public void testGroupModification(){
         app.getNavigationHelper().goToGroupPage();
-        app.getGroupHelper().initGroupCreation();
+        app.getGroupHelper().selectGroup();
+        app.getGroupHelper().initGroupModification();
         app.getGroupHelper().fillGroupForm(new GroupData("group4", "group4 header", "group4 footer"));
-        app.getGroupHelper().submitGroupCreation();
+        app.getGroupHelper().submitGroupModification();
         app.getGroupHelper().returnToGroupPage();
-
     }
-
 }
-
