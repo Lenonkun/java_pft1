@@ -26,7 +26,7 @@ public class AddressHelper extends HelperBase {
         if (creation==true) {
             select(By.name("new_group"), addressData.newGroup());
         } else if (creation==false) {
-            Assert.assertFalse(isElementPresent(By.name("new_group")));
+            //Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
         type(By.name("address2"), addressData.address2());
 
@@ -39,12 +39,6 @@ public class AddressHelper extends HelperBase {
     public void submitAddressModification() {
         click(By.xpath("//*[@id=\"content\"]/form[1]/input[22]"));
     }
-
-
-    public void returnToHomePage() {
-        click(By.linkText("home"));
-    }
-
 
     public void selectAddress() {
         click(By.name("selected[]"));

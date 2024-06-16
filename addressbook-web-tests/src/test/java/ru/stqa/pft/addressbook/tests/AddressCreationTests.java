@@ -7,11 +7,11 @@ public class AddressCreationTests extends TestBase {
 
   @Test
   public void testCreationAddress() throws Exception {
-    app.getNavigationHelper().goToAddressPage();//переходим на ЭФ создание адреса
+    app.getNavigationHelper().goToNewAddressPage();//переходим на ЭФ создание адреса
     app.getAddressHelper().fillAddressForm(new AddressData("ivan", "ivanov", "ivanovich", "123", "999"
             , "123@ya.ru", "11", "January", "1990","group4", "123123"), true);
     app.getAddressHelper().submitAddressCreation();
-    app.getAddressHelper().returnToHomePage();
+    app.getNavigationHelper().goToHomePage();
 
   }
 }

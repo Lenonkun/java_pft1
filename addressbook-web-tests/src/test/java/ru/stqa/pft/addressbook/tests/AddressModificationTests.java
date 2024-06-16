@@ -11,7 +11,7 @@ public class AddressModificationTests extends TestBase{
         app.getAddressHelper().fillAddressForm(new AddressData("Editivan", "Editivanov", "Editivanovich", "123", "999"
                 , "123@ya.ru", "11", "January", "1990", null,"123123"), false);
         app.getAddressHelper().submitAddressModification();
-        app.getAddressHelper().returnToHomePage();
+        app.getNavigationHelper().goToHomePage();
     }
 
 
