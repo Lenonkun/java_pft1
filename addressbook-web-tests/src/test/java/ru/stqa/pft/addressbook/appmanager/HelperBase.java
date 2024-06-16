@@ -15,18 +15,25 @@ public class HelperBase {
     protected void click(By locator) {
         wd.findElement(locator).click();
     }
+
     protected void clickToSelect(String text) {
         wd.findElement(By.name(text)).click();
     }
 
 
-
     protected void type(By locator, String text) {
         click(locator);
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
+        if (text != null) {
+            String existText = wd.findElement(locator).getAttribute("value");
+            if (!text.equals(existText)) {
+                wd.findElement(locator).clear();
+                wd.findElement(locator).sendKeys(text);
+            }
+        }
     }
-    protected void select(By locator, String text){
+
+
+    protected void select(By locator, String text) {
         click(locator);
         selectVisibleText(locator, text);
 

@@ -9,6 +9,7 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.BrowserType;
 
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
@@ -24,13 +25,13 @@ public class ApplicationManager {
     }
 
     public void init() {
-        if (brouser == BrowserType.OPERA) {
+        if (Objects.equals(brouser, BrowserType.OPERA)) {
             System.setProperty("webdriver.opera.driver", "C:\\Users\\user\\IdeaProjects\\operadriver_win32\\operadriver.exe");
             wd = new OperaDriver();
-        } else if (brouser == BrowserType.EDGE) {
+        } else if (Objects.equals(brouser, BrowserType.EDGE)) {
             System.setProperty("webdriver.edge.driver", "C:\\Users\\user\\IdeaProjects\\edgedriver_win64\\msedgedriver.exe");
             wd = new EdgeDriver();
-        } else if (brouser == BrowserType.IE) {
+        } else if (Objects.equals(brouser, BrowserType.IE)) {
             wd = new ChromeDriver();
             WebDriverManager.chromedriver().setup();
         }
