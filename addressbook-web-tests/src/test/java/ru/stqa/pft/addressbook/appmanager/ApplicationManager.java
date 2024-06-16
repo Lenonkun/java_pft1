@@ -12,6 +12,8 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private SessionHelper sessionHelper;
 
+    private AddressHelper addressHelper;
+
     public void init() {
         System.setProperty("webdriver.edge.driver", "C:\\Users\\user\\IdeaProjects\\edgedriver_win64\\msedgedriver.exe");
         wd = new EdgeDriver();
@@ -21,6 +23,8 @@ public class ApplicationManager {
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
+        addressHelper = new AddressHelper(wd);
+
 
         sessionHelper.login("secret", "admin");
     }
@@ -37,5 +41,7 @@ public class ApplicationManager {
     public NavigationHelper getNavigationHelper(){
         return navigationHelper;
     }
+
+    public AddressHelper getAddressHelper(){return addressHelper;}
 
 }

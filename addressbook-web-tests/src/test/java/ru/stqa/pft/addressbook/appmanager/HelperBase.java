@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class HelperBase {
     protected WebDriver wd;
@@ -14,11 +15,25 @@ public class HelperBase {
     protected void click(By locator) {
         wd.findElement(locator).click();
     }
+    protected void clickToSelect(String text) {
+        wd.findElement(By.name(text)).click();
+    }
+
+
 
     protected void type(By locator, String text) {
         click(locator);
         wd.findElement(locator).clear();
         wd.findElement(locator).sendKeys(text);
+    }
+    protected void select(By locator, String text){
+        click(locator);
+        selectVisibleText(locator, text);
+
+    }
+
+    private void selectVisibleText(By name, String text) {
+        new Select(wd.findElement(name)).selectByVisibleText(text);
     }
 
     public boolean isAlertPresent() {
