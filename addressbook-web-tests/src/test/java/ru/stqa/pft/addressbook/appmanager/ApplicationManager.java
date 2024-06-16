@@ -25,7 +25,7 @@ public class ApplicationManager {
 
     public void init() {
         if (brouser == BrowserType.OPERA) {
-            System.setProperty("webdriver.opera.driver", "C:\\Users\\user\\IdeaProjects\\operadriver_win64\\operadriver.exe");
+            System.setProperty("webdriver.opera.driver", "C:\\Users\\user\\IdeaProjects\\operadriver_win32\\operadriver.exe");
             wd = new OperaDriver();
         } else if (brouser == BrowserType.EDGE) {
             System.setProperty("webdriver.edge.driver", "C:\\Users\\user\\IdeaProjects\\edgedriver_win64\\msedgedriver.exe");
