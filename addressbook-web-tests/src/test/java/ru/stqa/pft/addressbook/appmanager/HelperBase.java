@@ -5,6 +5,8 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.NoSuchElementException;
+
 public class HelperBase {
     protected WebDriver wd;
 
@@ -15,11 +17,6 @@ public class HelperBase {
     protected void click(By locator) {
         wd.findElement(locator).click();
     }
-
-    protected void clickToSelect(String text) {
-        wd.findElement(By.name(text)).click();
-    }
-
 
     protected void type(By locator, String text) {
         click(locator);
@@ -48,6 +45,15 @@ public class HelperBase {
             wd.switchTo().alert();
             return true;
         } catch (NoAlertPresentException e) {
+            return false;
+        }
+    }
+
+    protected boolean isElementPresent(By locator) {
+        try {
+            wd.findElement(locator);
+            return true;
+        } catch (NoSuchElementException ex) {
             return false;
         }
     }

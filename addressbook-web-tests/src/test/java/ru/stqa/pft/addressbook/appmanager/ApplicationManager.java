@@ -36,11 +36,8 @@ public class ApplicationManager {
             WebDriverManager.chromedriver().setup();
         }
 
-
-        //System.setProperty("webdriver.edge.driver", "C:\\Users\\user\\IdeaProjects\\edgedriver_win64\\msedgedriver.exe");
-        //wd = new EdgeDriver();
         wd.get("http://localhost/addressbook/");
-        wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
