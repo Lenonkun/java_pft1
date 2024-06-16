@@ -15,6 +15,21 @@ dependencies {
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
 
+// https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.8.1'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.141.59'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-opera-driver
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-opera-driver', version: '3.141.59'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-ie-driver
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '3.141.59'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-edge-driver
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-edge-driver', version: '3.141.59'
+
 
 
 }
