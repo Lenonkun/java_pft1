@@ -2,10 +2,14 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.NoSuchElementException;
+
 
 public class HelperBase {
     protected WebDriver wd;
@@ -37,7 +41,9 @@ public class HelperBase {
     }
 
     private void selectVisibleText(By name, String text) {
-        new Select(wd.findElement(name)).selectByVisibleText(text);
+        if (isElementPresent(By.name(text))){
+        new Select(wd.findElement(name)).selectByVisibleText(text);}
+
     }
 
     public boolean isAlertPresent() {
@@ -51,9 +57,10 @@ public class HelperBase {
 
     protected boolean isElementPresent(By locator) {
         try {
-            wd.findElement(locator);
+            WebDriverWait wait = new WebDriverWait(wd,0,30); // ожидание до 10 секунд
+            wait.until(ExpectedConditions.presenceOfElementLocated(locator));
             return true;
-        } catch (NoSuchElementException ex) {
+        } catch (TimeoutException ex) {
             return false;
         }
     }

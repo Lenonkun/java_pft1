@@ -20,15 +20,9 @@ public class NavigationHelper extends HelperBase {
 
     }
 
-    public void goToNewAddressPage() {
-        click(By.linkText("add new"));
-    }
 
 
-    public void goToHomePage() {
-        if(isElementPresent(By.id("maintable"))){return;}
-        click(By.linkText("home"));
-    }
+
 
 
 }

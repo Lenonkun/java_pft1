@@ -4,16 +4,20 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
+
 public class GroupHelper extends HelperBase {
 
 
     public GroupHelper(WebDriver wd) {
-       super(wd);
+        super(wd);
     }
 
-    public void returnToGroupPage(){
+    public void returnToGroupPage() {
         click(By.linkText("group page"));
     }
+
     public void submitGroupCreation() {
         click(By.name("submit"));
     }
@@ -39,10 +43,21 @@ public class GroupHelper extends HelperBase {
 
     public void initGroupModification() {
         click(By.name("edit"));
-        
+
     }
 
     public void submitGroupModification() {
         click(By.name("update"));
+    }
+
+    public void createGroup(GroupData group) {
+        initGroupCreation();
+        fillGroupForm(group);
+        submitGroupCreation();
+        returnToGroupPage();
+    }
+
+    public boolean isThereAGroup() {
+        return isElementPresent(By.name("selected[]"));
     }
 }

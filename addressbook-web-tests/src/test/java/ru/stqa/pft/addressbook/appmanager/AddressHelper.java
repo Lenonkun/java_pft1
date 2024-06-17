@@ -13,6 +13,15 @@ public class AddressHelper extends HelperBase {
         super(wd);
     }
 
+    public void goToNewAddressPage() {
+        click(By.linkText("add new"));
+    }
+    public void goToHomePage() {
+       // if(isElementPresent(By.id("maintable"))){return;}
+        click(By.linkText("home"));
+    }
+
+
     public void fillAddressForm(AddressData addressData, boolean creation) {
         type(By.name("firstname"), addressData.fname());
         type(By.name("middlename"), addressData.mname());
@@ -59,4 +68,14 @@ public class AddressHelper extends HelperBase {
     }
 
 
+    public void createAddress(AddressData address, boolean b) {
+        goToNewAddressPage();//переходим на ЭФ создание адреса
+        fillAddressForm(address, true);
+        submitAddressCreation();
+        goToHomePage();
+    }
+
+    public boolean isThereAddress() {
+        return isElementPresent(By.xpath("/html/body/div[1]/div[4]/form[2]/table/tbody/tr[2]/td[1]/input"));
+    }
 }
