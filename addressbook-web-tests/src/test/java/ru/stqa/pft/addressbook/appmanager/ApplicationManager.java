@@ -18,7 +18,7 @@ public class ApplicationManager {
     private GroupHelper groupHelper;
     private NavigationHelper navigationHelper;
     private SessionHelper sessionHelper;
-    private AddressHelper addressHelper;
+    private ContactHelper addressHelper;
 
     public ApplicationManager(String brouser) {
         this.brouser = brouser;
@@ -42,7 +42,7 @@ public class ApplicationManager {
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
-        addressHelper = new AddressHelper(wd);
+        addressHelper = new ContactHelper(wd);
 
 
         sessionHelper.login("secret", "admin");
@@ -62,7 +62,7 @@ public class ApplicationManager {
         return navigationHelper;
     }
 
-    public AddressHelper getAddressHelper() {
+    public ContactHelper getContactHelper() {
         return addressHelper;
     }
 
