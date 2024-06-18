@@ -22,11 +22,12 @@ public class GroupCreationTests extends TestBase {
         Assert.assertEquals(after.size(), before.size() + 1);
 
         //вычисление максимального идентификатора
-        group.setId(after.stream()
-                .max(Comparator.comparingInt(GroupData::getId))
-                .get()
-                .getId());
+        Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);
         before.add(group);
+
+        before.sort(byId);
+        after.sort(byId);
+
         Assert.assertEquals(before,after);
 }
 
