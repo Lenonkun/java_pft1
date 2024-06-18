@@ -16,6 +16,7 @@ public class ContactData{
     private final String newGroup;
     private final String address2;
 
+
     public ContactData(String id, String fname, String mname, String lname, String address, String mobile, String email, String bday, String bmonth, String byear, String newGroup, String address2) {
         this.id = id;
         this.fname = fname;
@@ -44,6 +45,30 @@ public class ContactData{
         this.newGroup = newGroup;
         this.address2 = address2;
     }
+    public String getId() {
+        return id;
+    }
+
+
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (fname != null ? fname.hashCode() : 0);
+        result = 31 * result + (lname != null ? lname.hashCode() : 0);
+        return result;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+    public String getMname() {
+        return mname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
 
     @Override
     public String toString() {
@@ -66,57 +91,4 @@ public class ContactData{
         return Objects.equals(lname, that.lname);
     }
 
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (fname != null ? fname.hashCode() : 0);
-        result = 31 * result + (lname != null ? lname.hashCode() : 0);
-        return result;
     }
-    public String getId() {
-        return id;
-    }
-    public String getFname() {
-        return fname;
-    }
-
-    public String getMname() {
-        return mname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getBday() {
-        return bday;
-    }
-
-    public String getBmonth() {
-        return bmonth;
-    }
-
-    public String getByear() {
-        return byear;
-    }
-
-    public String getNewGroup() {
-        return newGroup;
-    }
-
-    public String getAddress2() {
-        return address2;
-    }
-}
