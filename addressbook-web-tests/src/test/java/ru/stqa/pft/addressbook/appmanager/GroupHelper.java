@@ -15,12 +15,15 @@ public class GroupHelper extends HelperBase {
         super(wd);
     }
 
-    public void returnToGroupPage() {
-        click(By.linkText("group page"));
+    public void createGroup(GroupData group) {
+        initGroupCreation();
+        fillGroupForm(group);
+        submitGroupCreation();
+        returnToGroupPage();
     }
 
-    public void submitGroupCreation() {
-        click(By.name("submit"));
+    public void initGroupCreation() {
+        click(By.name("new"));
     }
 
     public void fillGroupForm(GroupData groupData) {
@@ -29,8 +32,21 @@ public class GroupHelper extends HelperBase {
         type(By.name("group_footer"), groupData.getFooter());
     }
 
-    public void initGroupCreation() {
-        click(By.name("new"));
+    public void returnToGroupPage() {
+        click(By.linkText("group page"));
+    }
+
+    public void submitGroupCreation() {
+        click(By.name("submit"));
+    }
+
+    public void submitGroupModification() {
+        click(By.name("update"));
+    }
+
+    public void initGroupModification() {
+        click(By.name("edit"));
+
     }
 
     public void deleteSelectedGroups() {
@@ -39,31 +55,6 @@ public class GroupHelper extends HelperBase {
 
     public void selectGroup(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
-    }
-
-
-    public void initGroupModification() {
-        click(By.name("edit"));
-
-    }
-
-    public void submitGroupModification() {
-        click(By.name("update"));
-    }
-
-    public void createGroup(GroupData group) {
-        initGroupCreation();
-        fillGroupForm(group);
-        submitGroupCreation();
-        returnToGroupPage();
-    }
-
-    public boolean isThereAGroup() {
-        return isElementPresent(By.name("selected[]"));
-    }
-
-    public int getGroupCount() {
-        return wd.findElements(By.name("selected[]")).size();
     }
 
     public List<GroupData> getGroupList() {
@@ -77,4 +68,13 @@ public class GroupHelper extends HelperBase {
         }
         return groups;
     }
+
+
+    public boolean isThereAGroup() {
+        return isElementPresent(By.name("selected[]"));
+    }
+//    public int getGroupCount() {
+//        return wd.findElements(By.name("selected[]")).size();
+
+//    }
 }

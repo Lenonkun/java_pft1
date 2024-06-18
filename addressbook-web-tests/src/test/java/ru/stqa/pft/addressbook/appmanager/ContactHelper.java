@@ -17,15 +17,16 @@ public class ContactHelper extends HelperBase {
         super(wd);
     }
 
+    public void createContact(ContactData address, boolean b) {
+        goToNewContactPage();//переходим на ЭФ создание адреса
+        fillContactForm(address, b);
+        submitContactCreation();
+        goToHomePage();
+    }
+
     public void goToNewContactPage() {
         click(By.linkText("add new"));
     }
-
-    public void goToHomePage() {
-        // if(isElementPresent(By.id("maintable"))){return;}
-        click(By.linkText("home"));
-    }
-
 
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFname());
@@ -51,6 +52,11 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//*[@id=\"content\"]/form/input[21]"));
     }
 
+    public void goToHomePage() {
+        click(By.linkText("home"));
+    }
+
+
     public void submitContactModification() {
         click(By.xpath("//*[@id=\"content\"]/form[1]/input[22]"));
     }
@@ -70,13 +76,6 @@ public class ContactHelper extends HelperBase {
     public void initContactModification(int index) {
 //        click(By.xpath("//img[@alt='Edit']"));
         wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
-    }
-
-    public void createContact(ContactData address, boolean b) {
-        goToNewContactPage();//переходим на ЭФ создание адреса
-        fillContactForm(address, b);
-        submitContactCreation();
-        goToHomePage();
     }
 
     public boolean isThereContact() {

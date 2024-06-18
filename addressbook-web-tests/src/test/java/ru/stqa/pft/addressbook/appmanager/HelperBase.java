@@ -8,8 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.NoSuchElementException;
-
 
 public class HelperBase {
     protected WebDriver wd;
@@ -21,7 +19,6 @@ public class HelperBase {
     protected void click(By locator) {
         wd.findElement(locator).click();
     }
-
     protected void type(By locator, String text) {
         click(locator);
         if (text != null) {
@@ -41,9 +38,9 @@ public class HelperBase {
     }
 
     private void selectVisibleText(By name, String text) {
-       // if (isElementPresent(By.name(text))){
+        // if (isElementPresent(By.name(text))){
         new Select(wd.findElement(name)).selectByVisibleText(text);
-       // }
+        // }
 
     }
 
@@ -58,7 +55,7 @@ public class HelperBase {
 
     protected boolean isElementPresent(By locator) {
         try {
-            WebDriverWait wait = new WebDriverWait(wd,0,30); // ожидание до 10 секунд
+            WebDriverWait wait = new WebDriverWait(wd, 0, 30); // ожидание до 10 секунд
             wait.until(ExpectedConditions.presenceOfElementLocated(locator));
             return true;
         } catch (TimeoutException ex) {

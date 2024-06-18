@@ -28,9 +28,10 @@ class Point {
 
 class Run {
     public static void main(String[] args) {
+//        logger.info("Пример логирования с использованием SLF4J и Logback");
 
-        Point point1 = new Point(2, 2);
-        Point point2 = new Point(2, 2);
+        Point point1 = new Point(1, 6);
+        Point point2 = new Point(2, 3);
 
         double d1 = distance(point1, point2);
         System.out.println("Расстояние между точками в методе = " + d1);

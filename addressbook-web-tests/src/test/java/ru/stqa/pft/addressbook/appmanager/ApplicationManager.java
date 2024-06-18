@@ -19,7 +19,6 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private SessionHelper sessionHelper;
     private ContactHelper addressHelper;
-
     public ApplicationManager(String brouser) {
         this.brouser = brouser;
     }
@@ -35,7 +34,6 @@ public class ApplicationManager {
             wd = new ChromeDriver();
             WebDriverManager.chromedriver().setup();
         }
-
         wd.get("http://localhost/addressbook/");
         wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 
@@ -44,24 +42,18 @@ public class ApplicationManager {
         sessionHelper = new SessionHelper(wd);
         addressHelper = new ContactHelper(wd);
 
-
         sessionHelper.login("secret", "admin");
     }
-
-
     public void stop() {
         wd.findElement(By.linkText("Logout")).click();
         wd.quit();
     }
-
     public GroupHelper getGroupHelper() {
         return groupHelper;
     }
-
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
     }
-
     public ContactHelper getContactHelper() {
         return addressHelper;
     }
