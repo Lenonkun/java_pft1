@@ -41,8 +41,9 @@ public class HelperBase {
     }
 
     private void selectVisibleText(By name, String text) {
-        if (isElementPresent(By.name(text))){
-        new Select(wd.findElement(name)).selectByVisibleText(text);}
+       // if (isElementPresent(By.name(text))){
+        new Select(wd.findElement(name)).selectByVisibleText(text);
+       // }
 
     }
 
