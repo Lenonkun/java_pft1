@@ -30,6 +30,11 @@ dependencies {
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-edge-driver
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-edge-driver', version: '3.141.59'
 
+    // SLF4J API
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    // Logback Classic (реализация SLF4J)
+    implementation 'ch.qos.logback:logback-classic:1.4.8'
+
 
 
 }

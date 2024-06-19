@@ -13,7 +13,7 @@ public class ContactDeletionTests extends TestBase {
     public void testDeletionContact() {
         if (!app.getContactHelper().isThereContact()) {
             app.getContactHelper().createContact(new ContactData("ivan", "ivanov", "ivanovich", "123", "999"
-                    , "123@ya.ru", "11", "January", "1990", "group4", "123123"), true);
+                    , "123@ya.ru", "11", "January", "1990", "group1", "123123"), true);
         }
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().selectContact(before.size()-1);
@@ -22,6 +22,7 @@ public class ContactDeletionTests extends TestBase {
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() - 1);
 
+        before.remove(before.size()-1);
         Comparator<? super ContactData> byId = Comparator.comparingInt(ContactData::getId);
         before.sort(byId);
         after.sort(byId);

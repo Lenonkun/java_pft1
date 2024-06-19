@@ -13,6 +13,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
+
     private final String brouser;
     WebDriver wd;
     private GroupHelper groupHelper;

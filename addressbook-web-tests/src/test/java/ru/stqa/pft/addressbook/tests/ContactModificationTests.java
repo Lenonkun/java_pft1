@@ -13,6 +13,7 @@ import java.util.List;
 public class ContactModificationTests extends TestBase {
     @Test
     public void testContactModification() {
+        app.getContactHelper().goToHomePage();
         if (!app.getContactHelper().isThereContact()) {
             app.getContactHelper().createContact(new ContactData("ivan1", "ivanov", "ivanovich", "123", "999"
                     , "123@ya.ru", "11", "January", "1990", "group1", "123123"), true);
