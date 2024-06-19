@@ -14,11 +14,18 @@ public class GroupHelper extends HelperBase {
     public GroupHelper(WebDriver wd) {
         super(wd);
     }
-
     public void createGroup(GroupData group) {
         initGroupCreation();
         fillGroupForm(group);
         submitGroupCreation();
+        returnToGroupPage();
+    }
+
+    public void modifGroup(int index, GroupData group) {
+        selectGroup(index);
+        initGroupModification();
+        fillGroupForm(group);
+        submitGroupModification();
         returnToGroupPage();
     }
 

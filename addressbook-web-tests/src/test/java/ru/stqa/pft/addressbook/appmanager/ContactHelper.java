@@ -23,6 +23,12 @@ public class ContactHelper extends HelperBase {
         submitContactCreation();
         goToHomePage();
     }
+    public void modifContact(int index, ContactData contact) {
+        initContactModification(index);
+        fillContactForm(contact, false);
+        submitContactModification();
+        goToHomePage();
+    }
 
     public void goToNewContactPage() {
         click(By.linkText("add new"));
