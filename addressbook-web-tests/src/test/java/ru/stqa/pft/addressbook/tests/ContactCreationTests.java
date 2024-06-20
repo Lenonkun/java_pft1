@@ -13,10 +13,12 @@ public class ContactCreationTests extends TestBase {
     public void testCreationContact() throws Exception {
 //        for(int i = 1;i<4;i++) {
 //            logger.info("Пример логирования с использованием SLF4J и Logback");
-            app.goTo().HomePage();
+            app.contact().goToHomePage();
             List<ContactData> before = app.contact().list();
-            ContactData contact = new ContactData("ivan1", "ivanov", "ivanovich", "123", "999"
-                    , "123@ya.ru", "11", "January", "1990", "group1", "123123");
+            ContactData contact = new ContactData()
+                    .withFname("ivan1").withMname("ivanov").withLname("ivanovich").withAddress("123")
+                    .withMobile("999").withEmail("123@ya.ru").withBday("11").withBmonth("January")
+                    .withByear("1990").withGroup("group1").withAddress2("123123");
             app.contact().create(contact,true);
 
             List<ContactData> after = app.contact().list();

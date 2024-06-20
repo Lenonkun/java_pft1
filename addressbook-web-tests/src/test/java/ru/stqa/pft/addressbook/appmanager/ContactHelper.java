@@ -63,6 +63,10 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//*[@id=\"content\"]/form/input[21]"));
     }
 
+    public void goToHomePage() {
+        click(By.linkText("home"));
+    }
+
 
     public void submitContactModification() {
         click(By.xpath("//*[@id=\"content\"]/form[1]/input[22]"));
@@ -100,7 +104,7 @@ public class ContactHelper extends HelperBase {
             String lname = element.findElement(By.xpath("//td[2]")).getText();
             String name = element.findElement(By.xpath("//td[3]")).getText();
             int id = Integer.parseInt( element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData(id, name, null, lname, null, null, null, null, null, null, null, null);
+            ContactData contact = new ContactData().withId(id).withFname(name).withLname(lname);
             contacts.add(contact);
         }
         return contacts;
