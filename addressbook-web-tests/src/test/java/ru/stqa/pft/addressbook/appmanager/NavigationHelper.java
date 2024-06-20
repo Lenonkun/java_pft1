@@ -9,8 +9,11 @@ public class NavigationHelper extends HelperBase {
     public NavigationHelper(WebDriver wd) {
         super(wd);
     }
+    public void HomePage() {
+        click(By.linkText("home"));
+    }
 
-    public void goToGroupPage() {
+    public void groupPage() {
         if (isElementPresent(By.tagName("h1"))
                 && wd.findElement(By.tagName("h1")).getText().equals("Groups")
                 && isElementPresent(By.name("new"))) {
