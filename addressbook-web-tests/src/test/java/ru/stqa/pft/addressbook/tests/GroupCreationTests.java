@@ -6,6 +6,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 
 public class GroupCreationTests extends TestBase {
@@ -14,21 +15,16 @@ public class GroupCreationTests extends TestBase {
     public void testGroupCreation() throws Exception {
         app.goTo().groupPage();
 
-        List<GroupData> before = app.group().list();
+        Set<GroupData> before = app.group().all();
         GroupData group = new GroupData().withName("group1");
 
         app.group().create(group);
 
-        List<GroupData> after = app.group().list();
+        Set<GroupData> after = app.group().all();
         Assert.assertEquals(after.size(), before.size() + 1);
 
-        //вычисление максимального идентификатора
-        Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);
+        group.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt());
         before.add(group);
-
-        before.sort(byId);
-        after.sort(byId);
-
         Assert.assertEquals(before,after);
 }
 
