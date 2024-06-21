@@ -5,7 +5,6 @@ import java.util.Objects;
 public class GroupData {
 
     private int id=Integer.MAX_VALUE;
-
     private String name;
     private String header;
     private String footer;
@@ -18,6 +17,8 @@ public class GroupData {
         GroupData groupData = (GroupData) o;
 
         if (id != groupData.id) return false;
+        System.out.println("GroupData{" +"id='" + id + '\'' +", name='" + name + '\'' +'}');
+        System.out.println("GroupData{" +"id='" + this.id + '\'' +", name='" + this.name + '\'' +'}');
         return Objects.equals(name, groupData.name);
     }
 
@@ -68,6 +69,7 @@ public class GroupData {
 
     @Override
     public String toString() {
+
         return "GroupData{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +

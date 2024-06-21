@@ -128,8 +128,8 @@ public class ContactData{
     public String toString() {
         return "ContactData{" +
                 "id=" + id +
-                ", lname='" + lname + '\'' +
                 ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
                 '}';
     }
 
@@ -140,13 +140,15 @@ public class ContactData{
 
         ContactData that = (ContactData) o;
 
+        if (id != that.id) return false;
         if (!Objects.equals(fname, that.fname)) return false;
         return Objects.equals(lname, that.lname);
     }
 
     @Override
     public int hashCode() {
-        int result = fname != null ? fname.hashCode() : 0;
+        int result = id;
+        result = 31 * result + (fname != null ? fname.hashCode() : 0);
         result = 31 * result + (lname != null ? lname.hashCode() : 0);
         return result;
     }
