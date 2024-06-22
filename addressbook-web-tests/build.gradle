@@ -35,6 +35,10 @@ dependencies {
     // Logback Classic (реализация SLF4J)
     implementation 'ch.qos.logback:logback-classic:1.4.8'
 
+    // https://mvnrepository.com/artifact/org.hamcrest/hamcrest
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+
+
 
 
 }

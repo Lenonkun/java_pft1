@@ -3,8 +3,10 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase {
 
@@ -13,19 +15,16 @@ public class ContactCreationTests extends TestBase {
 //            logger.info("Пример логирования с использованием SLF4J и Logback");
         app.contact().goToHomePage();
 
-        Set<ContactData> before = app.contact().all();
+        Contacts before = app.contact().all();
         ContactData contact = new ContactData()
-                .withFname("ivan4").withMname("ivanovich").withLname("ivanov").withAddress("123")
+                .withFname("ivan").withMname("ivanovich").withLname("ivanov").withAddress("123")
                 .withMobile("999").withEmail("123@ya.ru").withBday("11").withBmonth("January")
                 .withByear("1990").withGroup("group1").withAddress2("123123");
 
         app.contact().create(contact, true);
-
-        Set<ContactData> after = app.contact().all();
-        Assert.assertEquals(after.size(), before.size() + 1);
-
-        contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
-        before.add(contact);
-        Assert.assertEquals(before, after);
+        Assert.assertEquals(app.contact().count(), before.size() + 1);
+        Contacts after = app.contact().all();
+        assertThat(after, equalTo(
+                before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }
 }
