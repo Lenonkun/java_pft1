@@ -19,9 +19,9 @@ public class ContactHelper extends HelperBase {
 
     public void create(ContactData address, boolean b) {
         goToNewContactPage();//переходим на ЭФ создание адреса
-        fillContactForm(address, b);
+        fillContactForm(address, b);//заполнить форму
         submitContactCreation();
-        contactsCache=null;
+        contactsCache=null;//признак создания\редактирования контакта
         goToHomePage();
     }
     public void modify(ContactData contact) {
@@ -46,6 +46,9 @@ public class ContactHelper extends HelperBase {
         type(By.name("firstname"), contactData.getFname());
         type(By.name("middlename"), contactData.getMname());
         type(By.name("lastname"), contactData.getLname());
+        if (contactData.getPhoto()!=null){
+            attach(By.name("photo"), contactData.getPhoto());
+        }
         type(By.name("address"), contactData.getAddress());
         type(By.name("home"), contactData.getHomePhone());
         type(By.name("mobile"), contactData.getMobile());
@@ -65,6 +68,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("address2"), contactData.getAddress2());
 
     }
+
 
     public void submitContactCreation() {
         click(By.xpath("//*[@id=\"content\"]/form/input[21]"));

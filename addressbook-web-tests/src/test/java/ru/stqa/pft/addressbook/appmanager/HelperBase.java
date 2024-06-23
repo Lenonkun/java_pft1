@@ -5,6 +5,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.time.Duration;
+
 
 public class HelperBase {
     protected WebDriver wd;
@@ -26,6 +29,11 @@ public class HelperBase {
             }
         }
     }
+    protected void attach(By locator, File file){
+        if (file != null) {
+            wd.findElement(locator).sendKeys(file.getAbsolutePath());
+        }
+    }
 
 
     protected void select(By locator, String text) {
@@ -33,6 +41,7 @@ public class HelperBase {
         selectVisibleText(locator, text);
 
     }
+
 
     private void selectVisibleText(By name, String text) {
         // if (isElementPresent(By.name(text))){
@@ -59,7 +68,7 @@ public class HelperBase {
 
     protected boolean isElementPresent(By locator) {
         try {
-            WebDriverWait wait = new WebDriverWait(wd, 0, 30); // ожидание до 10 секунд
+            WebDriverWait wait = new WebDriverWait(wd, Duration.ofMillis(30));
             wait.until(ExpectedConditions.presenceOfElementLocated(locator));
             return true;
         } catch (TimeoutException ex) {
