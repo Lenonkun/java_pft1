@@ -13,10 +13,10 @@ public class ContactData {
     private String email2;
     private String email3;
     private String allEmails;
-    private String bday;
-    private String bmonth;
+    private String bday="-";
+    private String bmonth="-";
     private String byear;
-    private String group;
+    private String group="[none]";
     private String address2;
     private String homePhone;
     private String workPhone;
