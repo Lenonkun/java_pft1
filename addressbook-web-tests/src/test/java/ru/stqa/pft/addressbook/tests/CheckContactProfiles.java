@@ -26,29 +26,20 @@ public class CheckContactProfiles extends TestBase {
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromViewForm = app.contact().infoFromViewForm(contact);
 
-        //Если проверять по отдельности
-        assertThat(contact.getFname(), equalTo(contactInfoFromViewForm.getFname()));
-        assertThat(contact.getMname(), equalTo(contactInfoFromViewForm.getMname()));
-        assertThat(contact.getAddress(), equalTo(contactInfoFromViewForm.getAddress()));
-//        assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromViewForm)));
-//        assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromViewForm)));
-
         assertThat(mergeContactInfo(contact), equalTo(mergeContactInfoForm(contactInfoFromViewForm)));
 
         app.contact().goToHomePage();
         app.contact().delete(contact);
-    }
 
-    private String mergePhones(ContactData contact) {
-        return Arrays.asList(contact.getHomePhone(), contact.getMobile(), contact.getWorkPhone())
-                .stream().filter((s -> !s.equals(""))).collect(Collectors.joining("\n"));
-    }
 
-    private String mergeEmails(ContactData contact) {
-        return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
-                .stream().filter((s -> !s.equals(""))).collect(Collectors.joining("\n"));
-    }
+        //Если проверять по отдельности на случай если в будущем понадобится
+//        assertThat(contact.getFname(), equalTo(contactInfoFromViewForm.getFname()));
+//        assertThat(contact.getMname(), equalTo(contactInfoFromViewForm.getMname()));
+//        assertThat(contact.getAddress(), equalTo(contactInfoFromViewForm.getAddress()));
+//        assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromViewForm)));
+//        assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromViewForm)));
 
+    }
 
     private String mergeContactInfo(ContactData contact) {
         return Arrays.asList(contact.getFname(), contact.getLname(), contact.getAddress()
@@ -62,6 +53,17 @@ public class CheckContactProfiles extends TestBase {
                         , contact.getEmail(), contact.getEmail2(), contact.getEmail3()).stream()
                 .collect(Collectors.joining("\n"));
     }
+
+/*    private String mergePhones(ContactData contact) {
+        return Arrays.asList(contact.getHomePhone(), contact.getMobile(), contact.getWorkPhone())
+                .stream().filter((s -> !s.equals(""))).collect(Collectors.joining("\n"));
+    }
+
+    private String mergeEmails(ContactData contact) {
+        return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+                .stream().filter((s -> !s.equals(""))).collect(Collectors.joining("\n"));
+    }*/
+
 
 
 }
