@@ -61,7 +61,7 @@ public class GroupData {
         return this;
     }
 
-    public GroupData wihtFooter(String footer) {
+    public GroupData withFooter(String footer) {
         this.footer = footer;
         return this;
     }
