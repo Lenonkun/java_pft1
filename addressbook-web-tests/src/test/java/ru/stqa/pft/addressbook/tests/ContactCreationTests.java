@@ -56,7 +56,8 @@ public class ContactCreationTests extends TestBase {
             Gson gson = new GsonBuilder()
                     .registerTypeAdapter(File.class, new FileTypeAdapter())
                     .create();
-            List<ContactData> contacts = gson.fromJson(json.toString(), new TypeToken<List<ContactData>>() {}.getType());
+            List<ContactData> contacts = gson.fromJson(json.toString(), new TypeToken<List<ContactData>>() {}
+                    .getType());
             return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
         }
     }

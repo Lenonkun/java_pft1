@@ -35,7 +35,6 @@ public class GroupDataGenerator {
         generator.run();
 
     }
-
     private void run() throws IOException {
         List<GroupData> groups = generateGroups(count);
         if (format.equals("csv")) {
@@ -48,7 +47,6 @@ public class GroupDataGenerator {
             System.out.println("Unrecognized");
         }
     }
-
     private void saveAsJson(List<GroupData> groups, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(groups);
@@ -56,7 +54,6 @@ public class GroupDataGenerator {
             writer.write(json);
         }
     }
-
     private void saveAsXml(List<GroupData> groups, File file) throws IOException {
         XStream xStream = new XStream();
         xStream.processAnnotations(GroupData.class);
@@ -66,8 +63,6 @@ public class GroupDataGenerator {
         }
 
     }
-
-
     private void saveAsCsv(List<GroupData> groups, File file) throws IOException {
         System.out.println(new File(".").getAbsolutePath());
         try (Writer writer = new FileWriter(file)) {
@@ -76,7 +71,6 @@ public class GroupDataGenerator {
             }
         }
     }
-
     private List<GroupData> generateGroups(int count) {
         List<GroupData> groups = new ArrayList<>();
         for (int i = 0; i < count; i++) {
@@ -84,7 +78,6 @@ public class GroupDataGenerator {
                     .withName(String.format("test %s", i))
                     .withHeader(String.format("header %s", i))
                     .withFooter(String.format("footer %s", i)));
-
         }
         return groups;
     }
