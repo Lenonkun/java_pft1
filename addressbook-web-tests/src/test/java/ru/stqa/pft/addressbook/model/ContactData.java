@@ -3,48 +3,88 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import jakarta.persistence.*;
+import org.hibernate.annotations.Type;
 
 import java.io.File;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
+import static java.sql.Types.TINYINT;
+
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
     @XStreamOmitField
+    @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
     @Expose
-    private String fname;
-    private String mname;
+    @Column(name = "firstname")
+    private String firstname;
+    @Column(name = "middlename")
+    private String middlename;
     @Expose
-    private String lname;
+    @Column(name = "lastname")
+    private String lastname;
     @Expose
+    @Column(name = "address")
     private String address;
     @Expose
-    private String mobile;
-    @Expose
+    @Column(name = "email")
     private String email;
+    @Column(name = "email2")
     private String email2;
+    @Column(name = "email3")
     private String email3;
+    @Transient
     private String allEmails;
+    @Expose
+    @Column(name = "mobile")
+    private String mobile;
+    @Column(name = "home")
+    private String homePhone;
+    @Column(name = "work")
+    private String workPhone;
+    @Transient
+    private String allPhones;
     @XStreamOmitField
-    private String bday;
+    @Column(name = "bday")
+    private byte bday;
     @XStreamOmitField
+    @Column(name = "bmonth")
     private String bmonth;
+    @Column(name = "byear")
     private String byear;
     @XStreamOmitField
+    @Transient
     private String group;
+    @Column(name = "address2")
     private String address2;
-    private String homePhone;
-    private String workPhone;
-    private String allPhones;
-    private File photo;
+    @Column(name = "photo")
+    private String photo;
+
+    @XStreamOmitField
+    @Column(name = "deprecated", columnDefinition = "TIMESTAMP")
+    private Date deprecated;
+
+    public Date getDeprecated() {
+        return deprecated;
+    }
+    public ContactData withDeprecated(Date deprecated) {
+        this.deprecated = deprecated;
+        return this;
+    }
 
 
     public File getPhoto() {
-        return photo;
+        return new File(photo);
     }
 
     public ContactData withPhoto(File photo) {
-        this.photo = photo;
+        this.photo = photo.getPath();
         return this;
     }
 
@@ -66,11 +106,6 @@ public class ContactData {
         return this;
     }
 
-
-
-
-
-
     public ContactData withId(int id) {
         this.id = id;
         return this;
@@ -81,29 +116,29 @@ public class ContactData {
 
 
     public ContactData withFname(String fname) {
-        this.fname = fname;
+        this.firstname = fname;
         return this;
     }
-    public String getFname() {
-        return fname;
+    public String getFirstname() {
+        return firstname;
     }
 
 
     public ContactData withMname(String mname) {
-        this.mname = mname;
+        this.middlename = mname;
         return this;
     }
-    public String getMname() {
-        return mname;
+    public String getMiddlename() {
+        return middlename;
     }
 
 
     public ContactData withLname(String lname) {
-        this.lname = lname;
+        this.lastname = lname;
         return this;
     }
-    public String getLname() {
-        return lname;
+    public String getLastname() {
+        return lastname;
     }
 
 
@@ -135,11 +170,11 @@ public class ContactData {
 
 
     public ContactData withBday(String bday) {
-        this.bday = bday;
+        this.bday = Byte.valueOf(bday);
         return this;
     }
     public String getBday() {
-        return bday;
+        return String.valueOf(bday);
     }
 
 
@@ -215,7 +250,7 @@ public class ContactData {
 
     @Override
     public String toString() {
-        return "ContactData{" + "id=" + id + ", fname='" + fname + '\'' + ", lname='" + lname + '\'' + '}';
+        return "ContactData{" + "id=" + id + ", fname='" + firstname + '\'' + ", lname='" + lastname + '\'' + '}';
     }
 
     @Override
@@ -226,15 +261,15 @@ public class ContactData {
         ContactData that = (ContactData) o;
 
         if (id != that.id) return false;
-        if (!Objects.equals(fname, that.fname)) return false;
-        return Objects.equals(lname, that.lname);
+        if (!Objects.equals(firstname, that.firstname)) return false;
+        return Objects.equals(lastname, that.lastname);
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (fname != null ? fname.hashCode() : 0);
-        result = 31 * result + (lname != null ? lname.hashCode() : 0);
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
     }
 }

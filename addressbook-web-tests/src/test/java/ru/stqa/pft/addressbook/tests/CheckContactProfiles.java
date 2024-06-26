@@ -42,13 +42,13 @@ public class CheckContactProfiles extends TestBase {
     }
 
     private String mergeContactInfo(ContactData contact) {
-        return Arrays.asList(contact.getFname(), contact.getLname(), contact.getAddress()
+        return Arrays.asList(contact.getFirstname(), contact.getLastname(), contact.getAddress()
                         , contact.getAllPhones(), contact.getAllEmails()).stream()
                 .collect(Collectors.joining("\n"));
     }
 
     private String mergeContactInfoForm(ContactData contact) {
-        return Arrays.asList(contact.getFname(), contact.getLname(), contact.getAddress()
+        return Arrays.asList(contact.getFirstname(), contact.getLastname(), contact.getAddress()
                         , contact.getHomePhone(), contact.getMobile(), contact.getWorkPhone()
                         , contact.getEmail(), contact.getEmail2(), contact.getEmail3()).stream()
                 .collect(Collectors.joining("\n"));

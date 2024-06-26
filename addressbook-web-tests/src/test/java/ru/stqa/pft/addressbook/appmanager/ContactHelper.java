@@ -43,12 +43,12 @@ public class ContactHelper extends HelperBase {
     }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
-        type(By.name("firstname"), contactData.getFname());
-        type(By.name("middlename"), contactData.getMname());
-        type(By.name("lastname"), contactData.getLname());
-        if (contactData.getPhoto()!=null){
-            attach(By.name("photo"), contactData.getPhoto());
-        }
+        type(By.name("firstname"), contactData.getFirstname());
+        type(By.name("middlename"), contactData.getMiddlename());
+        type(By.name("lastname"), contactData.getLastname());
+//        if (contactData.getPhoto()!=null){
+//            attach(By.name("photo"), contactData.getPhoto());
+//        }
         type(By.name("address"), contactData.getAddress());
         type(By.name("home"), contactData.getHomePhone());
         type(By.name("mobile"), contactData.getMobile());
