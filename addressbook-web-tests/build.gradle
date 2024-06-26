@@ -38,6 +38,9 @@ dependencies {
     testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.14'
     // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
     implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.4.0'
+    // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
+    implementation group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.5.2.Final'
+
 
 
 
