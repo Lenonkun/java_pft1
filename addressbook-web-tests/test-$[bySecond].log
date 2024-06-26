@@ -1,0 +1,56 @@
+188  [main] DEBUG org.testng.TestNG -- suiteXmlPath: "C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml"
+329  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml
+
+3145 [main] INFO  r.s.p.a.tests.GroupCreationTests -- Start test testGroupCreation
+4514 [main] INFO  r.s.p.a.tests.GroupCreationTests -- End test testGroupCreation
+4515 [main] INFO  r.s.p.a.tests.GroupCreationTests -- Start test testGroupCreation
+5409 [main] INFO  r.s.p.a.tests.GroupCreationTests -- End test testGroupCreation
+5410 [main] INFO  r.s.p.a.tests.GroupCreationTests -- Start test testGroupCreation
+6348 [main] INFO  r.s.p.a.tests.GroupCreationTests -- End test testGroupCreation
+183  [main] DEBUG org.testng.TestNG -- suiteXmlPath: "C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml"
+338  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml
+
+3162 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testGroupCreation
+3163 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testGroupCreation
+4661 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testGroupCreation
+4661 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testGroupCreation
+5587 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testGroupCreation
+5587 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testGroupCreation
+186  [main] DEBUG org.testng.TestNG -- suiteXmlPath: "C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml"
+345  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml
+
+3201 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testGroupCreation with parameters [GroupData{id='2147483647', name='test 0'}]
+3202 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testGroupCreation
+4798 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testGroupCreation with parameters [GroupData{id='2147483647', name='test 1'}]
+4798 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testGroupCreation
+5748 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testGroupCreation with parameters [GroupData{id='2147483647', name='test 2'}]
+5749 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testGroupCreation
+178  [main] DEBUG org.testng.TestNG -- suiteXmlPath: "C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml"
+328  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml
+
+3141 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testContactProfileCheck with parameters []
+3142 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testContactProfileCheck
+189  [main] DEBUG org.testng.TestNG -- suiteXmlPath: "C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml"
+343  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml
+
+3130 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testContactProfileCheck with parameters []
+3131 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testContactProfileCheck
+179  [main] DEBUG org.testng.TestNG -- suiteXmlPath: "C:\Users\user\IdeaProjects\java_pft\addressbook-web-tests\src\test\resources\testng-contacts.xml"
+348  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\user\IdeaProjects\java_pft\addressbook-web-tests\src\test\resources\testng-contacts.xml
+
+3156 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testCreationContact with parameters [ContactData{id=2147483647, fname='ivan0', lname='ivanov0'}]
+3157 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testCreationContact
+4114 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testCreationContact with parameters [ContactData{id=2147483647, fname='ivan1', lname='ivanov1'}]
+4114 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testCreationContact
+4990 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testCreationContact with parameters [ContactData{id=2147483647, fname='ivan2', lname='ivanov2'}]
+4990 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testCreationContact
+5888 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testContactModification with parameters []
+5888 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testContactModification
+7746 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testDeletionContact with parameters []
+7747 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testDeletionContact

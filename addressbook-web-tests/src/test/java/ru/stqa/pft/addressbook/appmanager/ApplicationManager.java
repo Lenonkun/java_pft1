@@ -9,42 +9,50 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.Browser;
 
 
-
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
+    private final Properties properties;
 
-    private final Browser brouser;
+    private final String browser;
     WebDriver wd;
     private GroupHelper groupHelper;
     private NavigationHelper navigationHelper;
     private SessionHelper sessionHelper;
     private ContactHelper addressHelper;
-    public ApplicationManager(Browser brouser) {
-        this.brouser = brouser;
+    public ApplicationManager(String browser){
+        this.browser = browser;
+        properties = new Properties();
     }
 
-    public void init() {
-        if (Objects.equals(brouser, Browser.OPERA)) {
-            System.setProperty("webdriver.opera.driver", "C:\\Users\\user\\IdeaProjects\\operadriver_win32\\operadriver.exe");
+    public void init() throws IOException {
+        String target = System.getProperty("target", "local");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
+        if (Objects.equals(browser, Browser.OPERA.browserName())) {
+//            System.setProperty("webdriver.opera.driver", "C:\\Users\\user\\IdeaProjects\\operadriver_win32\\operadriver.exe");
+            WebDriverManager.operadriver().setup();
             wd = new OperaDriver();
-        } else if (Objects.equals(brouser, Browser.EDGE)) {
+        } else if (Objects.equals(browser, Browser.EDGE.browserName())) {
             System.setProperty("webdriver.edge.driver", "C:\\Users\\user\\IdeaProjects\\edgedriver_win64\\msedgedriver.exe");
             wd = new EdgeDriver();
-        } else if (Objects.equals(brouser, Browser.IE)) {
-            wd = new InternetExplorerDriver();
+        } else if (Objects.equals(browser, Browser.IE.browserName())) {
             WebDriverManager.iedriver().setup();
+            wd = new InternetExplorerDriver();
         }
-        wd.get("http://localhost/addressbook/");
         wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        wd.get(properties.getProperty("web.baseUrl"));
 
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
-        sessionHelper = new SessionHelper(wd);
         addressHelper = new ContactHelper(wd);
-
-        sessionHelper.login("secret", "admin");
+        sessionHelper = new SessionHelper(wd);
+        sessionHelper.login(properties.getProperty("web.login"), properties.getProperty("web.password"));
     }
     public void stop() {
         wd.findElement(By.linkText("Logout")).click();

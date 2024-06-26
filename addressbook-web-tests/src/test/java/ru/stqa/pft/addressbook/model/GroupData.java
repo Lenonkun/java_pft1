@@ -25,8 +25,6 @@ public class GroupData {
         GroupData groupData = (GroupData) o;
 
         if (id != groupData.id) return false;
-        System.out.println("GroupData{" +"id='" + id + '\'' +", name='" + name + '\'' +'}');
-        System.out.println("GroupData{" +"id='" + this.id + '\'' +", name='" + this.name + '\'' +'}');
         return Objects.equals(name, groupData.name);
     }
 
