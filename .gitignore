@@ -19,3 +19,7 @@ gradle-app.setting
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+*.log
+java_pft/.idea/workspace.xml
+addressbook-web-tests/test-$\[bySecond\].log
+addressbook-web-tests/gradle/wrapper/gradle-wrapper.jar

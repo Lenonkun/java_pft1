@@ -54,3 +54,21 @@
 5888 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testContactModification
 7746 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testDeletionContact with parameters []
 7747 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testDeletionContact
+179  [main] DEBUG org.testng.TestNG -- suiteXmlPath: "C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml"
+335  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml
+
+3194 [main] INFO  r.s.pft.addressbook.tests.TestBase -- Start test testContactCheck with parameters []
+3195 [main] INFO  r.s.pft.addressbook.tests.TestBase -- End test testContactCheck
+175  [main] DEBUG org.testng.TestNG -- suiteXmlPath: "C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml"
+299  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml
+
+187  [main] DEBUG org.testng.TestNG -- suiteXmlPath: "C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml"
+308  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml
+
+181  [main] DEBUG org.testng.TestNG -- suiteXmlPath: "C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml"
+308  [main] INFO  org.testng.internal.Utils -- [TestNG] Running:
+  C:\Users\user\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml
+
