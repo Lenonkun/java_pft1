@@ -8,8 +8,6 @@ import ru.stqa.pft.addressbook.model.Groups;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.util.Set;
-
 
 public class GroupDeletionTests extends TestBase {
     @BeforeMethod

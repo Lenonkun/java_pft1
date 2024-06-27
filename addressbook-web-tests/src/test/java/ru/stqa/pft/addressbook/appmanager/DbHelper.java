@@ -40,11 +40,11 @@ public class DbHelper {
     }
 
     public Contacts contacts() {
-        sessionFactory.inTransaction(session -> {
-            session.createSelectionQuery("from ContactData where deprecated is null", ContactData.class)
-                    .getResultList()
-                    .forEach(contact -> out.println(contact));
-        });
-        return null;
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ContactData> result = session.createSelectionQuery("from ContactData where deprecated is null", ContactData.class).list();
+        session.getTransaction().commit();
+        session.close();
+        return new Contacts(result);
     }
 }
