@@ -8,7 +8,6 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.Browser;
 
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,7 +24,9 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private SessionHelper sessionHelper;
     private ContactHelper addressHelper;
-    public ApplicationManager(String browser){
+    private DbHelper dbHelper;
+
+    public ApplicationManager(String browser) {
         this.browser = browser;
         properties = new Properties();
     }
@@ -33,6 +34,7 @@ public class ApplicationManager {
     public void init() throws IOException {
         String target = System.getProperty("target", "local");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+        dbHelper = new DbHelper();
 
         if (Objects.equals(browser, Browser.OPERA.browserName())) {
 //            System.setProperty("webdriver.opera.driver", "C:\\Users\\user\\IdeaProjects\\operadriver_win32\\operadriver.exe");
@@ -53,19 +55,28 @@ public class ApplicationManager {
         addressHelper = new ContactHelper(wd);
         sessionHelper = new SessionHelper(wd);
         sessionHelper.login(properties.getProperty("web.login"), properties.getProperty("web.password"));
+
     }
+
     public void stop() {
         wd.findElement(By.linkText("Logout")).click();
         wd.quit();
     }
+
     public GroupHelper group() {
         return groupHelper;
     }
+
     public NavigationHelper goTo() {
         return navigationHelper;
     }
+
     public ContactHelper contact() {
         return addressHelper;
+    }
+
+    public DbHelper db() {
+        return dbHelper;
     }
 
 }

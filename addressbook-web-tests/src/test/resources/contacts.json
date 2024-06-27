@@ -1,23 +1,23 @@
 [
   {
-    "fname": "ivan0",
-    "lname": "ivanov0",
+    "firstname": "ivan0",
+    "lastname": "ivanov0",
     "address": "3930000",
-    "mobile": "88000",
-    "email": "0@ya.ru"
+    "email": "0@ya.ru",
+    "mobile": "88000"
   },
   {
-    "fname": "ivan1",
-    "lname": "ivanov1",
+    "firstname": "ivan1",
+    "lastname": "ivanov1",
     "address": "3930001",
-    "mobile": "88001",
-    "email": "1@ya.ru"
+    "email": "1@ya.ru",
+    "mobile": "88001"
   },
   {
-    "fname": "ivan2",
-    "lname": "ivanov2",
+    "firstname": "ivan2",
+    "lastname": "ivanov2",
     "address": "3930002",
-    "mobile": "88002",
-    "email": "2@ya.ru"
+    "email": "2@ya.ru",
+    "mobile": "88002"
   }
 ]

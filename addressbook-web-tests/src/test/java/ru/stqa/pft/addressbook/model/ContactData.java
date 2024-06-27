@@ -51,8 +51,8 @@ public class ContactData {
     @Transient
     private String allPhones;
     @XStreamOmitField
-    @Column(name = "bday")
-    private byte bday;
+    @Column(name = "bday",columnDefinition = "tinyint")
+    private String bday;
     @XStreamOmitField
     @Column(name = "bmonth")
     private String bmonth;
@@ -170,11 +170,11 @@ public class ContactData {
 
 
     public ContactData withBday(String bday) {
-        this.bday = Byte.valueOf(bday);
+        this.bday = bday;
         return this;
     }
     public String getBday() {
-        return String.valueOf(bday);
+        return bday;
     }
 
 

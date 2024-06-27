@@ -7,7 +7,12 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static java.lang.System.out;
 
@@ -22,7 +27,7 @@ public class HbConnectionTest {
         try {
             sessionFactory =
                     new MetadataSources(registry)
-                            .addAnnotatedClass(GroupData.class)
+                            .addAnnotatedClass(ContactData.class)
                             .buildMetadata()
                             .buildSessionFactory();
         }
@@ -34,9 +39,9 @@ public class HbConnectionTest {
     @Test
     public void testHbConnection(){
         sessionFactory.inTransaction(session -> {
-            session.createSelectionQuery("from GroupData", GroupData.class)
+            session.createSelectionQuery("from ContactData where deprecated is null", ContactData.class)
                     .getResultList()
-                    .forEach(group -> out.println(group));
+                    .forEach(contact -> out.println(contact));
         });
 
     }
