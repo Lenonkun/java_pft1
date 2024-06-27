@@ -7,17 +7,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.GroupData;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
 
 public class ContactDeletionTests extends TestBase {
     @BeforeMethod
-    public void ensurePreconditions(){
+    public void ensurePreconditions() {
         app.contact().goToHomePage();
-        if (app.db().contacts().size()==0) {
+        if (app.db().contacts().size() == 0) {
             app.contact().create(new ContactData()
                     .withFname("ivan4").withMname("ivanovich").withLname("ivanov").withAddress("123")
                     .withMobile("999").withEmail("123@ya.ru").withBday("11").withBmonth("January")
@@ -28,7 +23,7 @@ public class ContactDeletionTests extends TestBase {
     @Test
     public void testDeletionContact() {
         Contacts before = app.db().contacts();
-        ContactData deletedContact=before.iterator().next();
+        ContactData deletedContact = before.iterator().next();
 
         app.contact().delete(deletedContact);
 
@@ -36,8 +31,6 @@ public class ContactDeletionTests extends TestBase {
         Contacts after = app.db().contacts();
 
         MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.without(deletedContact)));
+        verifyContactsListInUI();
     }
-
-
-
 }

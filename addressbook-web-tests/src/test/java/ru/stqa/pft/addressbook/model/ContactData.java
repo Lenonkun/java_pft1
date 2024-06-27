@@ -4,14 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Type;
-
 import java.io.File;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
-import static java.sql.Types.TINYINT;
 
 @XStreamAlias("contact")
 @Entity
@@ -51,11 +47,14 @@ public class ContactData {
     @Transient
     private String allPhones;
     @XStreamOmitField
+    @Expose
     @Column(name = "bday",columnDefinition = "tinyint")
     private String bday;
     @XStreamOmitField
+    @Expose
     @Column(name = "bmonth")
     private String bmonth;
+    @Expose
     @Column(name = "byear")
     private String byear;
     @XStreamOmitField
@@ -239,7 +238,6 @@ public class ContactData {
         return email2;
     }
 
-
     public ContactData withEmail3(String email3) {
         this.email3 = email3;
         return this;
@@ -248,10 +246,6 @@ public class ContactData {
         return email3;
     }
 
-    @Override
-    public String toString() {
-        return "ContactData{" + "id=" + id + ", fname='" + firstname + '\'' + ", lname='" + lastname + '\'' + '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -262,7 +256,13 @@ public class ContactData {
 
         if (id != that.id) return false;
         if (!Objects.equals(firstname, that.firstname)) return false;
-        return Objects.equals(lastname, that.lastname);
+        if (!Objects.equals(lastname, that.lastname)) return false;
+        if (!Objects.equals(address, that.address)) return false;
+        if (!Objects.equals(email, that.email)) return false;
+        if (!Objects.equals(mobile, that.mobile)) return false;
+        if (!Objects.equals(bday, that.bday)) return false;
+        if (!Objects.equals(bmonth, that.bmonth)) return false;
+        return Objects.equals(byear, that.byear);
     }
 
     @Override
@@ -270,6 +270,27 @@ public class ContactData {
         int result = id;
         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (mobile != null ? mobile.hashCode() : 0);
+        result = 31 * result + (bday != null ? bday.hashCode() : 0);
+        result = 31 * result + (bmonth != null ? bmonth.hashCode() : 0);
+        result = 31 * result + (byear != null ? byear.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "\nContactData{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", bday='" + bday + '\'' +
+                ", bmonth='" + bmonth + '\'' +
+                ", byear='" + byear + '\'' +
+                '}';
     }
 }

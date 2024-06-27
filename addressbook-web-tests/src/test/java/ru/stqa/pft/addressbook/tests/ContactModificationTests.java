@@ -40,10 +40,7 @@ public class ContactModificationTests extends TestBase {
 
         MatcherAssert.assertThat(after, CoreMatchers.equalTo(
                 before.without(modifiedContact).withAdded(contact)));
-
+        verifyContactsListInUI();
     }
-
-
-
 
 }

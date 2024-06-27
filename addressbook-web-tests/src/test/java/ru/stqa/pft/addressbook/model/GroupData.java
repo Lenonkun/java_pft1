@@ -7,7 +7,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.Type;
 
 import java.util.Objects;
 
@@ -30,28 +29,6 @@ public class GroupData {
     @Expose
     @Column(name = "group_footer")
     private String footer;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        GroupData groupData = (GroupData) o;
-
-        if (id != groupData.id) return false;
-        if (!Objects.equals(name, groupData.name)) return false;
-        if (!Objects.equals(header, groupData.header)) return false;
-        return Objects.equals(footer, groupData.footer);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (header != null ? header.hashCode() : 0);
-        result = 31 * result + (footer != null ? footer.hashCode() : 0);
-        return result;
-    }
 
     public int getId() {
         return id;
@@ -91,13 +68,35 @@ public class GroupData {
     }
 
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        GroupData groupData = (GroupData) o;
+
+        if (id != groupData.id) return false;
+        if (!Objects.equals(name, groupData.name)) return false;
+        if (!Objects.equals(header, groupData.header)) return false;
+        return Objects.equals(footer, groupData.footer);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (header != null ? header.hashCode() : 0);
+        result = 31 * result + (footer != null ? footer.hashCode() : 0);
+        return result;
+    }
+
     @Override
     public String toString() {
 
-        return "GroupData{" +
+        return "\nGroupData{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }
-
 }
