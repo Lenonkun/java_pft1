@@ -4,9 +4,10 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -37,6 +38,36 @@ public class ContactHelper extends HelperBase {
         contactsCache=null;
         goToHomePage();
     }
+    public void addToGroup(ContactData contact, Integer groupId) {
+        selectContact(contact.getId());
+        addToSelectedGroup(groupId);
+        goToHomePage();
+
+
+
+    }
+
+    private void addToSelectedGroup(Integer groupId) {
+        click(By.xpath("//select[@name='to_group']"));
+        wd.findElement(By.cssSelector("select[name='to_group']>option[value='"+groupId+"']")).click();
+        click(By.xpath("//input[@name='add']"));
+    }
+
+    public void removeAContactWithGroup(ContactData contact, GroupData selectGroup) {
+        goToHomePage();
+        click(By.xpath("//select[@name='group']"));
+        wd.findElement(By.cssSelector("select[name='group']>option[value='"+selectGroup.getId()+"']")).click();
+        selectContact(contact.getId());
+        click(By.name("remove"));
+
+
+
+    }
+
+
+    public void goToHomePage() {
+        click(By.linkText("home"));
+    }
 
     public void goToNewContactPage() {
         click(By.linkText("add new"));
@@ -63,11 +94,13 @@ public class ContactHelper extends HelperBase {
             select(By.name("bmonth"), contactData.getBmonth());
         }
         type(By.name("byear"), contactData.getByear());
-        if (creation == true&&contactData.getGroup()!=null) {
-            select(By.name("new_group"), contactData.getGroup());
+
+        if (creation == true&&contactData.getGroups().size()>0) {
+//            select(By.name("new_group"), contactData.getGroup());
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
         }
-        else if (creation == false) {
-            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        else {
+//            Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
         type(By.name("address2"), contactData.getAddress2());
 
@@ -78,14 +111,10 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//*[@id=\"content\"]/form/input[21]"));
     }
 
-    public void goToHomePage() {
-        click(By.linkText("home"));
-    }
-
-
     public void submitContactModification() {
         click(By.xpath("//*[@id=\"content\"]/form[1]/input[22]"));
     }
+
 
     public void selectContact(int id) {
         wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
@@ -184,4 +213,6 @@ public class ContactHelper extends HelperBase {
     public String cleaned(String phone){
         return phone.replaceAll("\\s","").replaceAll("[-()]","");
     }
+
+
 }

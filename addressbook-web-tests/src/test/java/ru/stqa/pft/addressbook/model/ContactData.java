@@ -4,9 +4,12 @@ import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import jakarta.persistence.*;
+
 import java.io.File;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 @XStreamAlias("contact")
@@ -48,7 +51,7 @@ public class ContactData {
     private String allPhones;
     @XStreamOmitField
     @Expose
-    @Column(name = "bday",columnDefinition = "tinyint")
+    @Column(name = "bday", columnDefinition = "tinyint")
     private String bday;
     @XStreamOmitField
     @Expose
@@ -57,21 +60,31 @@ public class ContactData {
     @Expose
     @Column(name = "byear")
     private String byear;
-    @XStreamOmitField
-    @Transient
-    private String group;
     @Column(name = "address2")
     private String address2;
     @Column(name = "photo")
     private String photo;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "address_in_groups"
+            , joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<>();
+
     @XStreamOmitField
     @Column(name = "deprecated", columnDefinition = "TIMESTAMP")
     private Date deprecated;
 
+    public Groups getGroups(){
+        return new Groups(groups);
+    }
+    public void setGroups(Set<GroupData> groups) {
+        this.groups = groups;
+    }
+
     public Date getDeprecated() {
         return deprecated;
     }
+
     public ContactData withDeprecated(Date deprecated) {
         this.deprecated = deprecated;
         return this;
@@ -109,6 +122,7 @@ public class ContactData {
         this.id = id;
         return this;
     }
+
     public int getId() {
         return id;
     }
@@ -118,6 +132,7 @@ public class ContactData {
         this.firstname = fname;
         return this;
     }
+
     public String getFirstname() {
         return firstname;
     }
@@ -127,6 +142,7 @@ public class ContactData {
         this.middlename = mname;
         return this;
     }
+
     public String getMiddlename() {
         return middlename;
     }
@@ -136,6 +152,7 @@ public class ContactData {
         this.lastname = lname;
         return this;
     }
+
     public String getLastname() {
         return lastname;
     }
@@ -145,6 +162,7 @@ public class ContactData {
         this.address = address;
         return this;
     }
+
     public String getAddress() {
         return address;
     }
@@ -154,6 +172,7 @@ public class ContactData {
         this.mobile = mobile;
         return this;
     }
+
     public String getMobile() {
         return mobile;
     }
@@ -163,6 +182,7 @@ public class ContactData {
         this.email = email;
         return this;
     }
+
     public String getEmail() {
         return email;
     }
@@ -172,6 +192,7 @@ public class ContactData {
         this.bday = bday;
         return this;
     }
+
     public String getBday() {
         return bday;
     }
@@ -181,6 +202,7 @@ public class ContactData {
         this.bmonth = bmonth;
         return this;
     }
+
     public String getBmonth() {
         return bmonth;
     }
@@ -190,24 +212,18 @@ public class ContactData {
         this.byear = byear;
         return this;
     }
+
     public String getByear() {
         return byear;
     }
 
-
-    public ContactData withGroup(String newGroup) {
-        this.group = newGroup;
-        return this;
-    }
-    public String getGroup() {
-        return group;
-    }
 
 
     public ContactData withAddress2(String address2) {
         this.address2 = address2;
         return this;
     }
+
     public String getAddress2() {
         return address2;
     }
@@ -217,7 +233,8 @@ public class ContactData {
         this.homePhone = homePhone;
         return this;
     }
-    public String getHomePhone(){
+
+    public String getHomePhone() {
         return homePhone;
     }
 
@@ -226,7 +243,8 @@ public class ContactData {
         this.workPhone = workPhone;
         return this;
     }
-    public String getWorkPhone(){
+
+    public String getWorkPhone() {
         return workPhone;
     }
 
@@ -234,7 +252,8 @@ public class ContactData {
         this.email2 = email2;
         return this;
     }
-    public String getEmail2(){
+
+    public String getEmail2() {
         return email2;
     }
 
@@ -242,7 +261,8 @@ public class ContactData {
         this.email3 = email3;
         return this;
     }
-    public String getEmail3(){
+
+    public String getEmail3() {
         return email3;
     }
 

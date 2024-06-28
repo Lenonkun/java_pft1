@@ -32,7 +32,6 @@ public class TestBase {
     }
 
     @AfterSuite
-
     public void tearDown() throws Exception {
         app.stop();
     }

@@ -1,9 +1,13 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.io.File;
 import java.time.Duration;
 
@@ -18,6 +22,7 @@ public class HelperBase {
     protected void click(By locator) {
         wd.findElement(locator).click();
     }
+
     protected void type(By locator, String text) {
         click(locator);
         if (text != null) {
@@ -28,7 +33,8 @@ public class HelperBase {
             }
         }
     }
-    protected void attach(By locator, File file){
+
+    protected void attach(By locator, File file) {
         if (file != null) {
             wd.findElement(locator).sendKeys(file.getAbsolutePath());
         }
@@ -43,17 +49,7 @@ public class HelperBase {
 
 
     private void selectVisibleText(By name, String text) {
-        // if (isElementPresent(By.name(text))){
-        try {
-            new Select(wd.findElement(name)).selectByVisibleText(text);
-        }
-        catch (NoSuchElementException e){
-            new Select(wd.findElement(name)).selectByVisibleText("[none]");
-            System.out.println("The specified group does not exist. The contact will be created without being included in the group");
-        }
-
-        // }
-
+        new Select(wd.findElement(name)).selectByVisibleText(text);
     }
 
     public boolean isAlertPresent() {

@@ -11,7 +11,7 @@ import ru.stqa.pft.addressbook.model.Groups;
 import java.util.List;
 
 public class DbHelper {
-    private SessionFactory sessionFactory;
+    public SessionFactory sessionFactory;
 
     public DbHelper() {
         final StandardServiceRegistry registry =

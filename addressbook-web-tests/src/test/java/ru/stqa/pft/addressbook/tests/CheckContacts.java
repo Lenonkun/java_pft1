@@ -19,7 +19,7 @@ public class CheckContacts extends TestBase{
             app.contact().create(new ContactData()
                     .withFname("ivan4").withMname("ivanovich").withLname("ivanov").withAddress("123")
                     .withMobile("999").withEmail("123@ya.ru").withBday("11").withBmonth("January")
-                    .withByear("1990").withGroup("group1").withAddress2("123123"), true);
+                    .withByear("1990").withAddress2("123123"), true);
         }
     }
     public void testContactCheck(){

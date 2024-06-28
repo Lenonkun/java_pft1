@@ -20,7 +20,6 @@ public class HbConnectionTest {
     private SessionFactory sessionFactory;
     @BeforeClass
     protected void setUp() {
-        // A SessionFactory is set up once for an application!
         final StandardServiceRegistry registry =
                 new StandardServiceRegistryBuilder()
                         .build();
@@ -28,6 +27,7 @@ public class HbConnectionTest {
             sessionFactory =
                     new MetadataSources(registry)
                             .addAnnotatedClass(ContactData.class)
+                            .addAnnotatedClass(GroupData.class)
                             .buildMetadata()
                             .buildSessionFactory();
         }
@@ -41,7 +41,10 @@ public class HbConnectionTest {
         sessionFactory.inTransaction(session -> {
             session.createSelectionQuery("from ContactData where deprecated is null", ContactData.class)
                     .getResultList()
-                    .forEach(contact -> out.println(contact));
+                    .forEach(contact -> {
+                        out.println(contact);
+//                        out.println(contact.getGroups());
+                    });
         });
 
     }
