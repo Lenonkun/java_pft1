@@ -39,9 +39,9 @@ public class AddContactToGroup extends TestBase{
                 .findFirst().orElse(null);//найти группу для проверок ниже
         
         Set<ContactData> contactsInGroup = addedGroup.getContacts();
-        System.out.println("Group "+addedGroup);
-        System.out.println("should be a"+selectContact);
-        System.out.println("this? "+contactsInGroup);
+//        System.out.println("Group "+addedGroup);
+//        System.out.println("should be a"+selectContact);
+//        System.out.println("this? "+contactsInGroup);
         Assert.assertTrue(contactsInGroup.contains(selectContact));
 
 

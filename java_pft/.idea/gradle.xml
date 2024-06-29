@@ -22,6 +22,14 @@
           </set>
         </option>
       </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/../mantis-tests" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/../mantis-tests" />
+          </set>
+        </option>
+      </GradleProjectSettings>
     </option>
   </component>
 </project>

@@ -1,0 +1,48 @@
+apply plugin: 'java'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testImplementation group: 'org.testng', name: 'testng', version: '7.7.0'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.7'
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.17.0'
+// https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.7.0'
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '4.17.0'
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-opera-driver
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-opera-driver', version: '4.4.0'
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-ie-driver
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '4.17.0'
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-edge-driver
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-edge-driver', version: '4.17.0'
+    // SLF4J API
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    // Logback Classic (реализация SLF4J)
+    implementation 'ch.qos.logback:logback-classic:1.4.8'
+
+
+
+
+
+}
+test {
+    useTestNG {
+        suites 'src/test/resources/testng.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+    if (project.hasProperty('verifiUI')) {
+        systemProperty 'verifiUI', "${verifiUI}"
+    }
+}

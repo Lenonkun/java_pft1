@@ -35,8 +35,8 @@ public class RemoveContactFromGroup extends TestBase{
                 .findFirst().orElse(null);
 
         Set<GroupData> groupsInContact = contactAfter.getGroups();
-        System.out.println(groupsInContact);
-        System.out.println(selectGroup);
+//        System.out.println(groupsInContact);
+//        System.out.println(selectGroup);
         Assert.assertTrue(!groupsInContact.contains(selectGroup));
 
     }
