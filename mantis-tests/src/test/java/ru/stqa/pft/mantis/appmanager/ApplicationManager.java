@@ -6,7 +6,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.Browser;
-import ru.stqa.pft.mantis.model.MailMessage;
 
 import java.io.File;
 import java.io.FileReader;
@@ -23,6 +22,8 @@ public class ApplicationManager {
     private RegistrationHelper registrationHelper;
     private FtpHelper ftp;
     private MailHelper mailHelper;
+    private ModificationHelper modificationHelper;
+    private DbHelper dbHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -53,6 +54,14 @@ public class ApplicationManager {
             registrationHelper = new RegistrationHelper(this);
         }
         return registrationHelper;
+    }
+
+
+    public ModificationHelper modification() {
+        if (modificationHelper == null) {
+            modificationHelper = new ModificationHelper(this);
+        }
+        return modificationHelper;
     }
 
     public FtpHelper ftp() {
@@ -89,5 +98,12 @@ public class ApplicationManager {
             mailHelper = new MailHelper(this);
         }
         return mailHelper;
+    }
+
+    public DbHelper db() {
+        if (dbHelper==null){
+            dbHelper = new DbHelper(this);
+        }
+        return dbHelper;
     }
 }

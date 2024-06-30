@@ -38,6 +38,9 @@ dependencies {
     implementation 'com.sun.mail:javax.mail:1.6.2'
     // https://mvnrepository.com/artifact/ru.lanwen.verbalregex/java-verbal-expressions
     implementation group: 'ru.lanwen.verbalregex', name: 'java-verbal-expressions', version: '1.4'
+    implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.4.0'
+    // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
+    implementation group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.5.2.Final'
 
 
 
