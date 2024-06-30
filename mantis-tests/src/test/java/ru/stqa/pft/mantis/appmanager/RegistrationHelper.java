@@ -10,7 +10,6 @@ public class RegistrationHelper extends HelperBase {
 
     public void start(String userName, String mail) {
         wd.get(app.getProperty("web.baseUrl") + "signup_page.php");
-        wd.findElement(By.name("username")).sendKeys(userName);
         type(By.name("username"),userName);
         type(By.name("email"),mail);
         click(By.cssSelector("input[type='submit']"));
