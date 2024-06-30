@@ -25,7 +25,20 @@ dependencies {
     // SLF4J API
     implementation 'org.slf4j:slf4j-api:2.0.7'
     // Logback Classic (реализация SLF4J)
-    implementation 'ch.qos.logback:logback-classic:1.4.8'
+    implementation 'ch.qos.logback:logback-classic:1.4.12'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+    implementation 'org.apache.httpcomponents:httpcore:4.4.13'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    // https://mvnrepository.com/artifact/commons-net/commons-net
+    implementation group: 'commons-net', name: 'commons-net', version: '3.4'
+    // https://mvnrepository.com/artifact/org.subethamail/subethasmtp
+    implementation 'org.subethamail:subethasmtp:3.1.7'
+// https://mvnrepository.com/artifact/com.github.davidmoten/subethasmtp
+    implementation 'com.sun.mail:javax.mail:1.6.2'
+    // https://mvnrepository.com/artifact/ru.lanwen.verbalregex/java-verbal-expressions
+    implementation group: 'ru.lanwen.verbalregex', name: 'java-verbal-expressions', version: '1.4'
+
 
 
 
@@ -33,16 +46,5 @@ dependencies {
 
 }
 test {
-    useTestNG {
-        suites 'src/test/resources/testng.xml'
-    }
-    if (project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
-    }
-    if (project.hasProperty('target')) {
-        systemProperty 'target', "${target}"
-    }
-    if (project.hasProperty('verifiUI')) {
-        systemProperty 'verifiUI', "${verifiUI}"
-    }
+    useTestNG ()
 }
