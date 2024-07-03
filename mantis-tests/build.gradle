@@ -1,53 +1,30 @@
 apply plugin: 'java'
 
-
-repositories {
+repositories{
     mavenCentral()
 }
 
-dependencies {
-    // https://mvnrepository.com/artifact/org.testng/testng
-    testImplementation group: 'org.testng', name: 'testng', version: '7.7.0'
-    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.7'
-    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
-    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.17.0'
-// https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+dependencies{
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.7.0'
-    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '4.17.0'
-    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-opera-driver
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-opera-driver', version: '4.4.0'
-    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-ie-driver
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '4.17.0'
-    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-edge-driver
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-edge-driver', version: '4.17.0'
-    // SLF4J API
-    implementation 'org.slf4j:slf4j-api:2.0.7'
-    // Logback Classic (реализация SLF4J)
-    implementation 'ch.qos.logback:logback-classic:1.4.12'
-    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
-    implementation 'org.apache.httpcomponents:httpcore:4.4.13'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    // https://mvnrepository.com/artifact/commons-net/commons-net
-    implementation group: 'commons-net', name: 'commons-net', version: '3.4'
-    // https://mvnrepository.com/artifact/org.subethamail/subethasmtp
-    implementation 'org.subethamail:subethasmtp:3.1.7'
-// https://mvnrepository.com/artifact/com.github.davidmoten/subethasmtp
-    implementation 'com.sun.mail:javax.mail:1.6.2'
-    // https://mvnrepository.com/artifact/ru.lanwen.verbalregex/java-verbal-expressions
-    implementation group: 'ru.lanwen.verbalregex', name: 'java-verbal-expressions', version: '1.4'
-    implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.4.0'
-    // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
-    implementation group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.5.2.Final'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.17.0'
 
 
+    implementation  'org.testng:testng:6.9.10'
+    implementation  'org.seleniumhq.selenium:selenium-java:2.52.0'
+    implementation  'org.hamcrest:java-hamcrest:2.0.0.0'
+    implementation  'commons-net:commons-net:3.4'
+    implementation  'org.subethamail:subethasmtp:3.1.7'
+    implementation  'ru.lanwen.verbalregex:java-verbal-expressions:1.4'
+    implementation  'biz.futureware.mantis:mantis-axis-soap-client:1.2.19'
 
+    implementation  'ch.qos.logback:logback-classic:1.1.5'
+    implementation  'mysql:mysql-connector-java:5.1.38'
+    implementation 'org.hibernate:hibernate-core:6.5.2.Final'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.14'
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
 
-
-
-}
-test {
-    useTestNG ()
 }

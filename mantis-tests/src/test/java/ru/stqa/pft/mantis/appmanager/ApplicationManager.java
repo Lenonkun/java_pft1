@@ -1,11 +1,13 @@
 package ru.stqa.pft.mantis.appmanager;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.Browser;
+
 
 import java.io.File;
 import java.io.FileReader;
@@ -24,6 +26,7 @@ public class ApplicationManager {
     private MailHelper mailHelper;
     private ModificationHelper modificationHelper;
     private DbHelper dbHelper;
+    private SoapHelper soapHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -105,5 +108,13 @@ public class ApplicationManager {
             dbHelper = new DbHelper(this);
         }
         return dbHelper;
+    }
+
+    public SoapHelper soap(){
+        if(soapHelper ==null){
+            soapHelper = new SoapHelper(this);
+        }
+        return soapHelper;
+
     }
 }
